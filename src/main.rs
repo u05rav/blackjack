@@ -251,7 +251,7 @@ impl Deck {
     }
 
     fn shuffle(&mut self) {
-        for start in 0..52 {
+        for start in 0..self.cards.len() {
             let end = rand::thread_rng().gen_range(0..52);
 
             if start != end {
