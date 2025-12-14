@@ -269,18 +269,17 @@ struct Shoe {
 
 impl Shoe {
     fn new(num_decks: u32) -> Shoe {
-        let mut cards : Vec<Card> = Vec::new();
+        let mut cards: Vec<Card> = Vec::new();
 
         let deck = Deck::new();
 
         for _ in 0..num_decks {
-            for card in deck.cards.into_iter(){
+            for card in deck.cards.into_iter() {
                 cards.push(card.clone())
             }
         }
 
         Shoe { cards }
-
     }
 
     fn shuffle(&mut self) {
@@ -296,21 +295,21 @@ impl Shoe {
     }
 }
 
-fn main() {
-    let mut deck = Deck::new();
+struct Hand {
+    cards: Vec<Card>,
+}
 
-    deck.shuffle();
-
-    for card in deck.cards.into_iter() {
-        println!("{:?}", card)
+impl Hand {
+    fn new() -> Hand {
+        let cards: Vec<Card> = Vec::new();
+        Hand { cards }
     }
+}
 
+fn main() {
     let mut shoe = Shoe::new(6);
-
     shoe.shuffle();
 
-
-    for card in shoe.cards.into_iter() {
-        println!("{:?}", card)
-    }
+    let dealer = Hand::new();
+    let player = Hand::new();
 }
